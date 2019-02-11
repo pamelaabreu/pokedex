@@ -45,12 +45,26 @@ class App extends Component {
           spDefense: 65,
           speed: 45,
         },
-        moves: {
-          name: 'Razor Wind',
-          type: 'physical',
-          power: 50,
-          pp: 30,
-        }
+        moves: [
+          {
+            name: 'Razor Wind',
+            type: 'special',
+            power: 80,
+            pp: 10,
+          },
+          {
+            name: 'Swords Dance',
+            type: 'status',
+            power: null,
+            pp: 20,
+          },
+          {
+            name: 'Cut',
+            type: 'physical',
+            power: 50,
+            pp: 30,
+          }
+        ]
 
       }
 
