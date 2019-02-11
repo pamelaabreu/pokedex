@@ -38,12 +38,12 @@ class App extends Component {
         sprites: ['https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png',"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png"],
         types: ['poison', 'grass'],
         baseStats: {
-          hp: 45,
-          attack: 49,
-          defense: 49,
-          spAttack: 65,
-          spDefense: 65,
-          speed: 45,
+          ['HP']: 45,
+          ['Attack']: 49,
+          ['Defense']: 49,
+          ['Sp.Attack']: 65,
+          ['Sp.Defense']: 65,
+          ['Speed']: 45,
         },
         moves: [
           {
