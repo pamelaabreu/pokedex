@@ -13,15 +13,13 @@ const Profile = props => {
             moves} = data;
 
     const spritesImg = sprites.map((e, i) => {
-        return <img src={e} key={i} alt={name}></img>
+        return <img className='sprite-img' src={e} key={i} alt={name}></img>
     });
 
     // Will need to do logic for finding the colors for all the types LOL
     const typeWord = types.map((e, i) => {
         return (
-            <div className='types'>
-                <h3>{e}</h3>
-            </div>
+                <h3 className='type-text'>{e}</h3>
             );
     });
 
@@ -40,24 +38,35 @@ const Profile = props => {
     });
 
     const moveButton = moves.map((v, i) => {
-        return <h1>{v.name}</h1>
+        return <h1 className='m-button'>{v.name}</h1>
     })
 
     return (
         <>
         <div className='p-container'>
-            <h1>#{id} - {name}</h1>
-            <img src={image} alt={name}></img>
-            {spritesImg}
-            {typeWord}
+            <h1 className='home-button'>Home >> </h1>
+            <h1 className='pk-name'>{name}</h1>
+            <h1 className='name-header'># {id} - {name}</h1>
+
+            <div className='img-container'>
+                <div className='pk-img-col'>
+                    <img className='pk-img' src={image} alt={name}></img>
+                    <div className='types'>
+                        {typeWord}
+                    </div>
+                </div>
+                <div className='sprite-col'>
+                    {spritesImg}
+                </div>
+            </div>
             
-            <h1>Base Stats</h1>
-            <div className='baseStats'>
+            <h1 className='bs-header'>Base Stats</h1>
+            <div className='bs-container'>
             {bsCard}
             </div>
 
-            <h1>Moves</h1>
-            <div>
+            <h1 className='bs-header'>Moves</h1>
+            <div className='m-container'>
                 {moveButton}
             </div>
             
@@ -68,24 +77,3 @@ const Profile = props => {
 }
 
 export { Profile };
-
-// select_pk: {
-//     name:'bulbasaur',
-//     id: 1,
-//     image: 'https://img.pokemondb.net/artwork/bulbasaur.jpg',
-//     sprites: ['https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png',"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png"],
-//     types: ['poison', 'grass'],
-//     baseStats: {
-//       hp: 45,
-//       attack: 49,
-//       defense: 49,
-//       spAttack: 65,
-//       spDefense: 65,
-//       speed: 45,
-//     },
-//     moves: {
-//       name: 'Razor Wind',
-//       type: 'physical',
-//       power: 50,
-//       pp: 30,
-//     }
