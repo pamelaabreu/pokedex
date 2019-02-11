@@ -4,6 +4,31 @@
     padding: 0px;
 }
 
-.p-container{
+.p-container {
     border: 1px solid black;
+}
+
+.baseStats {
+    border: 2px lightgrey inset;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: space-around;
+    /* align-items: center; */
+}
+
+.bs-card{
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+}
+
+.bs-info {
+    font-size: 10px;
+    color: lightgrey;
+}
+
+.bs-num {
+    font-weight: bold;
+    font-size: 20px;
 }
