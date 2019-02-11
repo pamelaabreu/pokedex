@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const Profile = (props) => {
+const Profile = props => {
 
     return (
         <>
@@ -9,4 +9,4 @@ const Profile = (props) => {
     );
 }
 
-export {Profile};
+export { Profile };
