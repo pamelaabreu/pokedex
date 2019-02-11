@@ -45,7 +45,7 @@ class App extends Component {
           speed: 45,
         },
         moves: {
-          name: 'moveName',
+          name: 'Razor Wind',
           type: 'physical',
           power: 50,
           pp: 30,
