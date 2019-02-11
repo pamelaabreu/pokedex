@@ -63,7 +63,7 @@ class App extends Component {
       <>
         <h1>Replace this line with Search bar Component</h1>
         <h1>Replace this line with Homepage Component</h1>
-        <Profile />
+        <Profile data={this.state.select_pk}/>
       </>
     );
   }
