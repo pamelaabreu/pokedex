@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import {Profile} from './components/profile';
-import {Searchbar} from './components/searchbar';
 import {Homepage} from './components/homepage';
+import Searchbar from './components/searchbar';
+
 
 class App extends Component {
   constructor(props){
