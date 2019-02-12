@@ -14,29 +14,7 @@ class App extends Component {
 
     this.state = {
       search: '',
-      poke_list: [
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-        {image: 'https://img.pokemondb.net/sprites/sun-moon/icon/bulbasaur.png', name: 'bulbasaur', number: 1},
-      ],
+      poke_list: [],
       select_pk: {
         name:'bulbasaur',
         id: 1,
@@ -81,23 +59,31 @@ class App extends Component {
     Axios.get(listUrl)
       .then(response => response.data)
       .then(data => {
-        // listUrl = data.next;
         offset += 20;
 
-        const dataList = data.results.map((e, i) => {
-          const name = e.name;
-          const number = i + 1;
-          const image = `https://img.pokemondb.net/sprites/sun-moon/icon/${name}.png`;
+        if(this.state.poke_list.length >= 20){
+          const dataList = data.results.map((e, i) => {
+            const name = e.name;
+            const number = i + 1 + this.state.poke_list.length;
+            const image = `https://img.pokemondb.net/sprites/sun-moon/icon/${name}.png`;
+  
+            return { image, name, number };
+          });
 
-          return {image, name, number};
-        })
-
-        if(this.state.poke_list.length === 20){
-
-        }
-    
-        const pkList = this.state.poke_list.concat(dataList);
-        this.setState({poke_list: pkList})
+          const pkList = this.state.poke_list.concat(dataList);
+          this.setState({poke_list: pkList});
+        } else {
+          const dataList = data.results.map((e, i) => {
+            const name = e.name;
+            const number = i + 1;
+            const image = `https://img.pokemondb.net/sprites/sun-moon/icon/${name}.png`;
+  
+            return { image, name, number };
+          })
+      
+          const pkList = this.state.poke_list.concat(dataList);
+          this.setState({poke_list: pkList});
+        };
       })
       .catch(err => {
         console.log(err);
@@ -110,8 +96,7 @@ class App extends Component {
 
   componentDidUpdate (prevProps, prevState) {
     console.log('this was previous state', prevState)
-    console.log('this is current state', this.state.poke_list)
-
+    console.log('this is current state', this.state)
   }
 
   render() {
@@ -120,6 +105,7 @@ class App extends Component {
       <>
         <Searchbar />
         <Homepage />
+          <p onClick={this.getlist}>Load More</p>
         <Profile data={this.state.select_pk}/>
       </>
     );
