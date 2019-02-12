@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import  {Profile}  from './components/profile';
+import {Profile} from './components/profile';
+import {Searchbar} from './components/searchbar';
 
 class App extends Component {
   constructor(props){
@@ -73,9 +74,10 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <>
-        <h1>Replace this line with Search bar Component</h1>
+        <Searchbar />
         <h1>Replace this line with Homepage Component</h1>
         <Profile data={this.state.select_pk}/>
       </>
