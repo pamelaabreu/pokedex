@@ -19,7 +19,7 @@ const Profile = props => {
     // Will need to do logic for finding the colors for all the types LOL
     const typeWord = types.map((e, i) => {
         return (
-                <h3 className='type-text'>{e}</h3>
+                <h3 key={i} className='type-text'>{e}</h3>
             );
     });
 
