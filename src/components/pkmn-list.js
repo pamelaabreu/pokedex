@@ -1,4 +1,4 @@
-[
+const pkmn_list = [
 	"Bulbasaur",
 	"Ivysaur",
 	"Venusaur",
@@ -807,3 +807,5 @@
   	"Blacephalon",
   	"Zeraora"
 ]
+
+export {pkmn_list};
