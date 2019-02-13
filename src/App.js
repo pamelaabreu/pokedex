@@ -104,8 +104,7 @@ class App extends Component {
     return (
       <>
         <Searchbar />
-        <Homepage />
-          <p onClick={this.getlist}>Load More</p>
+        <Homepage data={this.state.poke_list} onClick={this.getlist}/>
         <Profile data={this.state.select_pk}/>
       </>
     );
