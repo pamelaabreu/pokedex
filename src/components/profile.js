@@ -16,13 +16,13 @@ const Profile = props => {
         return <img className='sprite-img' src={e} key={i} alt={name}></img>
     });
 
-    // Will need to do logic for finding the colors for all the types LOL
     const typeWord = types.map((e, i) => {
         return (
                 <h3 key={i} className='type-text'>{e}</h3>
             );
     });
 
+    // Basestat is an array of objects now, fix this
     const bsArr = Object.entries(baseStats);
     const bsCard = bsArr.map((v, i,) => {
         let key= v[0];
@@ -38,7 +38,7 @@ const Profile = props => {
     });
 
     const moveButton = moves.map((v, i) => {
-        return <h1 className='m-button'>{v.name}</h1>
+        return <h1 key={i} className='m-button'>{v.name}</h1>
     })
 
     return (
