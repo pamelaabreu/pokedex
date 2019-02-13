@@ -5,9 +5,6 @@ import {Profile} from './components/profile';
 import {Homepage} from './components/homepage';
 import Searchbar from './components/searchbar';
 
-let offset = 0;
-let listUrl = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=20`;
-
 class App extends Component {
   constructor(props){
     super(props);
@@ -56,6 +53,9 @@ class App extends Component {
   }
 
   getlist = () => {
+    let offset = 0;
+    let listUrl = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=20`;
+
     Axios.get(listUrl)
       .then(response => response.data)
       .then(data => {
@@ -90,8 +90,50 @@ class App extends Component {
       })
   }
 
+  getPk = (name) => {
+    let pkUrl = `https://pokeapi.co/api/v2/pokemon/${name}`;
+    Axios.get(pkUrl)
+      .then(response => {
+        const {
+          name,
+          id,
+          sprites,
+          moves,
+          types,
+          stats,
+        } = response.data;
+
+        let image = `https://img.pokemondb.net/artwork/${name}.jpg`;
+
+        const spritesArr = [sprites.back_default, sprites.back_shiny, sprites.front_default, sprites.front_shiny];
+        
+        const typesArr = types.map(e => {
+          return e.type.name;
+        });
+        
+        const baseStatsArr = stats.map(e => {
+          const val = e.base_stat;
+          const statName = e.stat.name;
+          return {statName, val};
+        });
+
+        const movesArr = moves.map((e, i) => {
+          const name = e.move.name;
+          // if(i >= 3){
+              // return {name};
+          // }
+          return {name};
+        });
+        // this.setState({select_pk: {name, id, image, sprites:spritesArr, types:typesArr, baseStatsArr, moves:movesArr}});
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
   componentDidMount () {
     this.getlist();
+
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -100,7 +142,6 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <>
         <Searchbar />
