@@ -1,10 +1,38 @@
-.btn-group {
-  display: block;  
-  margin: 100px;
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 10px;
 }
 
-.poke-btn {
-  border: 1px solid gray;
-  font-family: 'Courier New', Courier, monospace;
-  
+/* .sub-container{
+  flex-wrap: nowrap;
+} */
+
+.name{
+  margin-left: 20px;
+  text-transform: uppercase;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.id{
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.red-btn{
+  background-color: red;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  text-transform: uppercase;
+  font-family: 'Noto Sans', sans-serif;
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 10px;
 }
