@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       search: '',
       poke_list: [],
-      activeIndex: null
+      activeIndex: null,
     }
   }
 
@@ -54,8 +54,12 @@ class App extends Component {
       })
   }
 
-  toggleProfile = () => {
+  toggleProfile = (name) => {
+    this.setState({activeIndex: name});
+  }
 
+  toggleHomePage = () => {
+    this.setState({activeIndex: null});
   }
 
   componentDidMount () {
@@ -71,8 +75,11 @@ class App extends Component {
     return (
       <>
         <Searchbar />
-        <Homepage data={this.state.poke_list} onClick={this.getlist}/>
-        <Profile name={this.state.activeIndex}/>
+
+        {!this.state.activeIndex ? 
+        <Homepage click={this.toggleProfile} data={this.state.poke_list} onClick={this.getlist}/> 
+        : 
+        <Profile name={this.state.activeIndex} onClick={this.toggleHomePage}/>}
       </>
     );
   }
