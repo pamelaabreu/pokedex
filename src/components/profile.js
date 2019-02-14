@@ -7,40 +7,13 @@ class Profile extends Component {
         super(props);
 
         this.state = {
-            name:'bulbasaur',
-            id: 1,
-            image: 'https://img.pokemondb.net/artwork/bulbasaur.jpg',
-            sprites: ['https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png',"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png"],
-            types: ['poison', 'grass'],
-            baseStats: [
-              {hp: 45},
-              {attack: 49},
-              {defense: 49},
-              {spAttack: 65},
-              {spDefense: 65},
-              {speed: 45},
-            ],
-            moves: [
-              {
-                name: 'Razor Wind',
-                type: 'special',
-                power: 80,
-                pp: 10,
-              },
-              {
-                name: 'Swords Dance',
-                type: 'status',
-                power: null,
-                pp: 20,
-              },
-              {
-                name: 'Cut',
-                type: 'physical',
-                power: 50,
-                pp: 30,
-              }
-            ]
-    
+            name:'',
+            id: 0,
+            image: '',
+            sprites: [],
+            types: [],
+            baseStats: [],
+            moves: []
           }
     }
 
@@ -94,14 +67,13 @@ class Profile extends Component {
     }
 
     componentDidMount () {
-        // this.getPk(props.name);
-        console.log(this.spritesImg);
-        this.getPk('pikachu');
+        this.getPk(this.props.name);
+        // this.getPk('pidgey');
     }
 
     componentDidUpdate (prevProps, prevState) {
-        console.log('this was previous state', prevState)
-        console.log('this is current state', this.state)
+        // console.log('this was previous state', prevState)
+        // console.log('this is current state', this.state)
     }
  
     spritesImg () {
@@ -134,7 +106,7 @@ class Profile extends Component {
         let value = v.val;
             return (
                 <>
-                    <div className='bs-card'>
+                    <div key={i} className='bs-card'>
                         <h1 className='bs-info'>{key}</h1>
                         <h1 className='bs-num'>{value}</h1>
                     </div>
@@ -149,7 +121,7 @@ class Profile extends Component {
         return (
         <>
             <div className='p-container'>
-                <h1 className='home-button'>Home >> </h1>
+                <h1 className='home-button' onClick={this.props.onClick}>Home >> </h1>
                 <h1 className='pk-name'>{this.state.name}</h1>
                 <h1 className='name-header'># {this.state.id} - {this.state.name}</h1>
 
@@ -182,79 +154,3 @@ class Profile extends Component {
 };
 
 export default Profile;
-
-// const Profile = props => {
-
-//     const {data} = props;
-//     const {name, 
-//             id, 
-//             image, 
-//             sprites, 
-//             types, 
-//             baseStatsArr,
-//             moves} = data;
-
-//     const spritesImg = sprites.map((e, i) => {
-//         return <img className='sprite-img' src={e} key={i} alt={name}></img>
-//     });
-
-//     const typeWord = types.map((e, i) => {
-//         return (
-//                 <h3 key={i} className='type-text'>{e}</h3>
-//             );
-//     });
-
-//     // Basestat is an array of objects now, fix this
-//     // const bsCard = baseStatsArr.map((v, i,) => {
-//     //     let key= v.statName;
-//     //     let value = v.val;
-//     //     return (
-//     //         <>
-//     //         <div className='bs-card'>
-//     //             <h1 className='bs-info'>{key}</h1>
-//     //             <h1 className='bs-num'>{value}</h1>
-//     //         </div>
-//     //         </>
-//     //         );
-//     // });
-
-//     const moveButton = moves.map((v, i) => {
-//         return <h1 key={i} className='m-button'>{v.name}</h1>
-//     });
-
-//     return (
-//         <>
-//         <div className='p-container'>
-//             <h1 className='home-button'>Home >> </h1>
-//             <h1 className='pk-name'>{name}</h1>
-//             <h1 className='name-header'># {id} - {name}</h1>
-
-//             <div className='img-container'>
-//                 <div className='pk-img-col'>
-//                     <img className='pk-img' src={image} alt={name}></img>
-//                     <div className='types'>
-//                         {typeWord}
-//                     </div>
-//                 </div>
-//                 <div className='sprite-col'>
-//                     {spritesImg}
-//                 </div>
-//             </div>
-            
-//             <h1 className='bs-header'>Base Stats</h1>
-//             <div className='bs-container'>
-//                 {/* {bsCard} */}
-//             </div>
-
-//             <h1 className='bs-header'>Moves</h1>
-//             <div className='m-container'>
-//                 {moveButton}
-//             </div>
-            
-//         </div>
-        
-//         </>
-//     );
-// }
-
-// export { Profile };
