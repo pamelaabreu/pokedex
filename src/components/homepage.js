@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
-import {
-Button
-} from 'reactstrap';
+// import {Button} from 'reactstrap';
 import './homepage.css';
+
+const padNum = (num)=>{ 
+  if(num <10 ){
+    return '00'+ num
+  }
+  else if (num < 100){
+    return '0' + num
+  }
+  else if (num <1000){
+    return num
+  }
+}
 
 const Homepage = props => {
   const {data} = props;
@@ -10,10 +20,13 @@ const Homepage = props => {
   const ListButton = data.map((e, i) => {
     return (
       <>
-      <Button key={i} className= "poke-btn" color="white" size="lg" block>
-        <img style={{display: "inline", float:"left"}} alt="icon" src={e.image}></img>
-        <p style ={{textAlign:"center"}}>{e.name}</p><span style={{textAlign:"right"}} >{e.number}</span>
-      </Button>
+        <div className="flex-container">
+          <div className="sub-container">
+            <img className="image" alt="icon" src={e.image}></img>
+            <span className="name">{e.name}</span>
+          </div>
+          <div className="id"># {padNum(e.number)}</div>
+        </div>
       </>
     );
   });
@@ -21,11 +34,8 @@ const Homepage = props => {
 
 return (
     <React.Fragment>
-    <div className='btn-group'>
-      {ListButton}
-
-    </div>    
-    <p onClick={props.getlist}>Load More</p>
+      {ListButton}  
+    <div onClick={props.getlist} className="red-btn">LOAD MORE</div>    
     </React.Fragment>
   )
     
