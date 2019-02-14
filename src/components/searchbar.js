@@ -1,35 +1,53 @@
 import React from 'react';
 import './searchbar.css';
+// import {pkmn_list} from './pkmn_list';
 
- class Searchbar extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        initialState: "Search for pokemon",
-        currentText: " "
-      }
+class Searchbar extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            initialState: "Search pokemon",
+            currentText: ""
+        }
     }
-  
     changeText(currentText) {
-      this.setState({currentText});
-      //console.log({currentText});
-    }
-  
-    render() {
-      return (
-          <>
-           
-            <div class="search-box">
-              <form>
-                <input type="text" placeholder={this.state.initialState} onChange={this.changeText.bind(this, 'currentText')} />
-                <button onClick={this.changeText.bind(this, 'currentText')}>Search</button>
-              </form>
-            </div>
-          </>
-      );
-  
-    }
-  
-  }
+        this.setState({ currentText });
+        //console.log({currentText});
 
-  export default Searchbar;
+    }
+    onChange=(e)=>{ 
+        const input= e.target.value
+        console.log(e.target.value)
+    }
+    render() {
+        return (
+            <>
+                <div className="redheader" ></div>
+                
+                    <div className="searchbar-container" >
+                        <div className='img-col'>
+
+                            <img src="https://files.slack.com/files-pri/TD416AWAE-FG4DTBZAR/download/screen_shot_2019-02-11_at_7.20.46_pm.png" />
+                        </div>
+
+                        <div className='search-col'>
+
+                        <h1 className= "header-title"> Pursuit Pokedex</h1>
+                            <form >
+                                <input type="text" placeholder={this.state.initialState} onChange={this.onChange} />
+                                <button onClick={this.changeText.bind(this, 'currentText')}>Search</button>
+                            </form>
+                        </div>
+
+                        <div className='img-col'>
+                                <img src="https://files.slack.com/files-pri/TD416AWAE-FG4DTBZAR/download/screen_shot_2019-02-11_at_7.20.46_pm.png" />
+                        </div>
+                    </div>
+            </>
+        );
+
+    }
+
+}
+
+export default Searchbar;
