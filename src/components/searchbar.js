@@ -1,24 +1,41 @@
 import React from 'react';
 import './searchbar.css';
-// import {pkmn_list} from './pkmn_list';
+import {pkmn_list} from './pkmn-list';
 
 class Searchbar extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             initialState: "Search pokemon",
-            currentText: ""
+            currentText: "",
+            searchResults:[]
         }
     }
-    changeText(currentText) {
+    changeText(currentText ) {
         this.setState({ currentText });
         //console.log({currentText});
 
     }
     onChange=(e)=>{ 
-        const input= e.target.value
+        const input= e.target.value;
+        const searchResultsArr=pkmn_list.map((e,i)=>{
+        if(e.toUpperCase().includes(input.toUpperCase())){
+            return e;
+        }
+        console.log ("lol pam")
+     })
+        this.setState({searchResults:searchResultsArr});
         console.log(e.target.value)
     }
+    dropDown=()=>{
+        const dropDown= this.state.searchResults.map((e,i)=>{
+            return <p key={i}>{e}</p>
+        })
+
+        return dropDown;
+        
+    }
+
     render() {
         return (
             <>
@@ -36,6 +53,9 @@ class Searchbar extends React.Component {
                             <form >
                                 <input type="text" placeholder={this.state.initialState} onChange={this.onChange} />
                                 <button onClick={this.changeText.bind(this, 'currentText')}>Search</button>
+                                {this.state.searchResults.length > 0 ?
+                                    this.dropDown() : <p></p>
+                                }
                             </form>
                         </div>
 
