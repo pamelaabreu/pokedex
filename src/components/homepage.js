@@ -16,11 +16,10 @@ const padNum = (num)=>{
 
 const Homepage = props => {
   const {data} = props;
-
   const ListButton = data.map((e, i) => {
     return (
       <>
-        <div className="flex-container">
+        <div key={i} onClick={() => props.click(e.name)} className="flex-container">
           <div className="sub-container">
             <img className="image" alt="icon" src={e.image}></img>
             <span className="name">{e.name}</span>
@@ -35,7 +34,7 @@ const Homepage = props => {
 return (
     <React.Fragment>
       {ListButton}  
-    <div onClick={props.getlist} className="red-btn">LOAD MORE</div>    
+    <div onClick={() => {props.onClick()}} className="red-btn">LOAD MORE</div>    
     </React.Fragment>
   )
     
