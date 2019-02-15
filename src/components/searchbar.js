@@ -18,18 +18,24 @@ class Searchbar extends React.Component {
     }
     onChange=(e)=>{ 
         const input= e.target.value;
-        const searchResultsArr=pkmn_list.map((e,i)=>{
-        if(e.toUpperCase().includes(input.toUpperCase())){
-            return e;
+
+        if(input === '' || input === ' '){
+            this.setState({searchResults:[]});
+        } else {
+            const searchResultsArr=pkmn_list.map((e,i)=>{
+                if(e.toUpperCase().includes(input.toUpperCase())){
+                    return e;
+                }
+                
+             })
+                this.setState({searchResults:searchResultsArr});
         }
-        console.log ("lol pam")
-     })
-        this.setState({searchResults:searchResultsArr});
-        console.log(e.target.value)
+
     }
     dropDown=()=>{
         const dropDown= this.state.searchResults.map((e,i)=>{
-            return <p key={i}>{e}</p>
+            return <p onClick={() => this.props.click(e.toLowerCase())} key={i}>{e}</p>
+            
         })
 
         return dropDown;
