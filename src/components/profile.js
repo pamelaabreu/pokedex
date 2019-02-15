@@ -68,12 +68,6 @@ class Profile extends Component {
 
     componentDidMount () {
         this.getPk(this.props.name);
-        // this.getPk('pidgey');
-    }
-
-    componentDidUpdate (prevProps, prevState) {
-        // console.log('this was previous state', prevState)
-        // console.log('this is current state', this.state)
     }
  
     spritesImg () {

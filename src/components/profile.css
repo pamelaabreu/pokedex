@@ -10,7 +10,6 @@
     font-family: 'Noto Sans', sans-serif;
     color: #ADADAD;
     font-size: 20px;
-    letter-spacing: 5px;
     display: inline-block;
 }
 
@@ -19,17 +18,19 @@
     font-family: 'Noto Sans', sans-serif;
     color: #C32826;
     font-size: 20px;
-    letter-spacing: 5px;
+    text-transform: capitalize;
+
 }
 
 .p-container {
-    margin: 20px 20px;
+    margin: 20px 15%;
 }
 
 .img-container {
     display: flex;
     flex-wrap: wrap;
     margin: 30px 30px;
+    padding: 0 100px;
 }
 
 .pk-img-col {
@@ -38,51 +39,61 @@
 
 .pk-img{
     display: inline-block;
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     margin-bottom: 40px;
+    margin-top: 20px;
 }
 
 .types{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .type-text{
-    padding: 4% 17%;
+    padding: 4% 4%;
     color: white;
     border-radius: 10px;
-    border: 1px solid black;
 }
 
 .sprite-col {
     display: flex;
     flex-wrap: wrap;
-    flex: 2;
+    flex: 3;
+    justify-content: center;
     align-items: center;
 }
 
 .sprite-img {
-    width: 162px;
-    height: 162px;
+    width: 100px;
+    height: 100px;
 }
 
 .name-header {
+    color: #3a3a3a;
     margin: 0px 30px;
-    text-align: right;
+    text-align: left;
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700; 
-    font-size: 50px;
-    letter-spacing: 5px;
+    font-size: 40px;
+    letter-spacing: 3px;
+    text-transform: capitalize;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #3a3a3a;
 }
 
 .bs-header {
     margin: 0px 30px;
+    color: #3a3a3a;
+    text-align: left;
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700; 
     font-size: 40px;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
+    text-transform: capitalize;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #3a3a3a;
 }
 
 .bs-container {
@@ -92,19 +103,17 @@
     flex-wrap: wrap;
     flex: 1;
     justify-content: space-around;
-    margin: 30px 30px;
-    padding: 20px 20px;
+    margin: 10px 30px;
+    padding: 10px 10px;
 }
 
 .bs-card{
-    margin: 5px;
-    padding: 5px;
     text-align: center;
 }
 
 .bs-info {
     font-family: 'Noto Sans', sans-serif;
-    font-size: 30px;
+    font-size: 20px;
     color: #ADADAD;
     margin-bottom: 20px;
 }
@@ -112,7 +121,7 @@
 .bs-num {
     font-family: 'Noto Sans', sans-serif;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .m-container {
@@ -120,21 +129,18 @@
     flex-wrap: wrap;
     flex: 1;
     justify-content: flex-start;
-    margin: 30px 30px;
+    margin: 10px 30px;
 }
 
 .m-button {
-    margin: 16px 10px;
+    margin: 10px 5px;
     padding: 10px;
     border: 1px black solid;
     border-radius: 10px;
-
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700; 
-    font-size: 30px;
-    letter-spacing: 5px;
+    font-size: 20px;
 }
-
 
 .normal {
     background-color: #A6AB72;
