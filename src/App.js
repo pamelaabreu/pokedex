@@ -74,7 +74,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <Searchbar />
+        <Searchbar click={this.toggleProfile}/>
 
         {!this.state.activeIndex ? 
         <Homepage click={this.toggleProfile} data={this.state.poke_list} onClick={this.getlist}/> 
