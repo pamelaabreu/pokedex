@@ -14,6 +14,8 @@ class App extends Component {
       search: '',
       poke_list: [],
       activeIndex: null,
+      pageOffset: 0,
+      isFetching: false,
     }
   }
 
@@ -34,8 +36,14 @@ class App extends Component {
             return { image, name, number };
           });
 
+          const {pageOffset2} =this.state;
           const pkList = this.state.poke_list.concat(dataList);
-          this.setState({poke_list: pkList});
+          this.setState({
+            poke_list: pkList,
+            isFetching: false, 
+            pageOffset: pageOffset2 + pkList.length
+          });
+          
         } else {
           const dataList = data.results.map((e, i) => {
             const name = e.name;
@@ -46,7 +54,12 @@ class App extends Component {
           })
       
           const pkList = this.state.poke_list.concat(dataList);
-          this.setState({poke_list: pkList});
+          const {pageOffset2} =this.state;
+
+          this.setState({
+            poke_list: pkList, 
+            isFetching: false, 
+            pageOffset: pageOffset2 + dataList.length});
         };
       })
       .catch(err => {
@@ -63,12 +76,27 @@ class App extends Component {
   }
 
   componentDidMount () {
+    window.addEventListener("scroll", this.handleScroll);
     this.getlist();
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
+
+  handleScroll = () => {
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 &&
+      this.state.poke_list.length &&
+      !this.state.isFetching
+    ) {
+      this.getlist();
+    }
+  };
+
   componentDidUpdate (prevProps, prevState) {
-    console.log('this was previous state', prevState)
-    console.log('this is current state', this.state)
+    // console.log('this was previous state', prevState)
+    // console.log('this is current state', this.state)
   }
 
   render() {
