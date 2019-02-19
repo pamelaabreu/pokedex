@@ -2,33 +2,34 @@
 width: 100%;
 background-color:#C32826;
 min-height: 20px;
+margin-bottom: 20px;
 }
 
 .header-title{
     text-align: center;
     color: #C32826;
     font-family: 'Noto Sans', sans-serif;
+    padding-bottom: 30px;
 }
 
 .searchbar-container{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    margin-bottom: 200px;
+    margin-bottom: 40px;
 }
 
-.img-col{
-flex: 1;
-width: 100px;
-height: 100px;
-}
 
+.img{
+    height: 100px;
+}
 
 .search-col{
-    flex:2;
+    flex:8;
     display:flex;
     flex-wrap:wrap;
     flex-direction: column;
     justify-content: center;
     align-items:center;
 }
+

@@ -50,15 +50,15 @@ class Searchbar extends React.Component {
                     <div className="searchbar-container" >
                         <div className='img-col'>
 
-                            <img src="https://files.slack.com/files-pri/TD416AWAE-FG4DTBZAR/download/screen_shot_2019-02-11_at_7.20.46_pm.png" />
+                            <img className="img" src="https://files.slack.com/files-pri/TD416AWAE-FG4DTBZAR/download/screen_shot_2019-02-11_at_7.20.46_pm.png" />
                         </div>
 
                         <div className='search-col'>
 
                         <h1 className= "header-title"> Pursuit Pokedex</h1>
-                            <form >
-                                <input type="text" placeholder={this.state.initialState} onChange={this.onChange} />
-                                <button onClick={this.changeText.bind(this, 'currentText')}>Search</button>
+                            <form>
+                                <input style={{width:'325px', borderRadius: '5px'}}type="text" placeholder={this.state.initialState} onChange={this.onChange} />
+                                {/* <button onClick={this.changeText.bind(this, 'currentText')}>Search</button> */}
                                 {this.state.searchResults.length > 0 ?
                                     this.dropDown() : <p></p>
                                 }
@@ -66,9 +66,10 @@ class Searchbar extends React.Component {
                         </div>
 
                         <div className='img-col'>
-                                <img src="https://files.slack.com/files-pri/TD416AWAE-FG4DTBZAR/download/screen_shot_2019-02-11_at_7.20.46_pm.png" />
+                                <img className="img left-image"src="https://files.slack.com/files-pri/TD416AWAE-FG4DTBZAR/download/screen_shot_2019-02-11_at_7.20.46_pm.png"/>
                         </div>
                     </div>
+                    <hr></hr>
             </>
         );
 
