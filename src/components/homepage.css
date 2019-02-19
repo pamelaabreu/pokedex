@@ -8,11 +8,17 @@
   width: 60%;
   margin: auto;
   margin-bottom: 10px;
+
 }
 
+.flex-container:hover{
+  background-color: #e5e5e5;
+}
 /* .sub-container{
   flex-wrap: nowrap;
 } */
+
+
 
 .name{
   margin-left: 20px;
@@ -25,7 +31,7 @@
 }
 
 .red-btn{
-  background-color: red;
+  background-color:#C32826;
   border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
@@ -35,4 +41,11 @@
   width: 60%;
   margin: auto;
   margin-bottom: 10px;
+}
+
+.red-btn:hover{
+  background-color: #800000;
+}
+.white-txt{
+  color:#e5e5e5;
 }
