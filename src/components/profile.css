@@ -13,6 +13,10 @@
     display: inline-block;
 }
 
+.home-button:hover {
+    color: #777676;
+}
+
 .pk-name {
     display: inline-block;
     font-family: 'Noto Sans', sans-serif;
@@ -41,6 +45,7 @@
     display: inline-block;
     width: 200px;
     height: 200px;
+    object-fit: contain;
     margin-bottom: 40px;
     margin-top: 20px;
 }
@@ -127,12 +132,12 @@
 .m-container {
     display: flex;
     flex-wrap: wrap;
-    flex: 1;
     justify-content: flex-start;
     margin: 10px 30px;
 }
 
-.m-button {
+.m-button { 
+    text-transform: capitalize;
     margin: 10px 5px;
     padding: 10px;
     border: 1px black solid;
@@ -140,6 +145,10 @@
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700; 
     font-size: 20px;
+}
+
+.m-button:hover {
+    background-color: #dbdbdb;
 }
 
 .normal {
