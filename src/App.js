@@ -14,8 +14,6 @@ class App extends Component {
       search: '',
       poke_list: [],
       activeIndex: null,
-      pageOffset: 0,
-      isFetching: false,
     }
   }
 
