@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import {Button} from 'reactstrap';
 import './homepage.css';
 
 const padNum = (num)=>{ 
@@ -34,10 +33,10 @@ const Homepage = props => {
 return (
     <React.Fragment>
       {ListButton}  
-    <div onClick={() => {props.onClick()}} className="red-btn">LOAD MORE</div>    
+    <div onClick={() => {props.onClick()}} className="red-btn white-txt">LOAD MORE</div>    
     </React.Fragment>
   )
     
 }
 
-export { Homepage };
+export default  Homepage;
