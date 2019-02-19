@@ -25,8 +25,6 @@
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700; 
     font-size: 20px;
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: #3a3a3a;
   }
 
   .close-button:hover {

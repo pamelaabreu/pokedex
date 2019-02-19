@@ -5,7 +5,6 @@ class Modal extends Component {
     state = { show: false };
   
     showModal = (e) => {
-    // this.props.click(v.name)
       this.setState({ show: true });
     }
     
@@ -15,7 +14,15 @@ class Modal extends Component {
 
     moveButton = () => { 
         const moveButton = this.props.data.moves.map((v, i) => {
-            return <h1 key={i} onClick={this.showModal} className='m-button'>{v.name}</h1>
+            return (
+              <h1 
+              key={i} 
+              onClick={() => {
+                this.props.click(v.name)
+                this.showModal()}} 
+              className='m-button'>{v.name}
+              </h1>
+              )
         });
 
         return moveButton;
@@ -28,7 +35,9 @@ class Modal extends Component {
                 <Popup show={this.state.show} handleClose={this.hideModal} >
                     <p className='m-name'>Cut</p>
                     <p className='m-info' style={{textTransform: 'capitalize'}}>Type: {type}</p>
-                    <p className='m-info'>Power: {power}</p>
+                    {
+                      !power ? <p></p> : <p className='m-info'>Power:{power}</p>
+                    }
                     <p className='m-info'>PP: {pp}</p>
                 </Popup>
                 {this.moveButton()}
