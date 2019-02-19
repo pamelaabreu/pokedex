@@ -76,27 +76,7 @@ class App extends Component {
   }
 
   componentDidMount () {
-    window.addEventListener("scroll", this.handleScroll);
     this.getlist();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-  }
-
-  handleScroll = () => {
-    if (
-      window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 &&
-      this.state.poke_list.length &&
-      !this.state.isFetching
-    ) {
-      this.getlist();
-    }
-  };
-
-  componentDidUpdate (prevProps, prevState) {
-    // console.log('this was previous state', prevState)
-    // console.log('this is current state', this.state)
   }
 
   render() {
