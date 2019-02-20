@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React, { Component } from 'react';
 import './profile.css';
+import Modal from './modal';
 
 class Profile extends Component {
     constructor (props) {
@@ -13,7 +14,9 @@ class Profile extends Component {
             sprites: [],
             types: [],
             baseStats: [],
-            moves: []
+            moves: [],
+            show: false,
+            moveInfo: {}
           }
     }
 
@@ -46,9 +49,6 @@ class Profile extends Component {
     
             const movesArr = moves.map((e, i) => {
               const name = e.move.name;
-              // if(i >= 3){
-                  // return {name};
-              // }
               return {name};
             });
 
@@ -64,6 +64,24 @@ class Profile extends Component {
           .catch(err => {
             console.log(err)
           })
+    }
+
+    getMove = (name) => {
+        const moveUrl = `https://pokeapi.co/api/v2/move/${name}/`;
+        Axios.get(moveUrl)
+            .then(response => response.data)
+            .then(data => {
+                const {power, pp, type} = data;
+                this.setState({
+                    moveInfo:{
+                        type: type.name,
+                        power,
+                        pp
+                }})
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     componentDidMount () {
@@ -86,14 +104,6 @@ class Profile extends Component {
         return typeWord;
     }
 
-    moveButton () { 
-        const moveButton = this.state.moves.map((v, i) => {
-            return <h1 key={i} className='m-button'>{v.name}</h1>
-        });
-
-        return moveButton;
-    }
-
     bsCard () {
         const bsCard = this.state.baseStats.map((v, i,) => {
         let key = v.statName;
@@ -112,6 +122,7 @@ class Profile extends Component {
     }
 
     render () {
+        const {moves, moveInfo} = this.state;
         return (
         <>
             <div className='p-container'>
@@ -138,9 +149,9 @@ class Profile extends Component {
 
                 <h1 className='bs-header'>Moves</h1>
                 <div className='m-container'>
-                    {this.moveButton()}
+                    <Modal click={this.getMove} data={{moves, moveInfo}}/>
                 </div>
-                
+
             </div>
         </>
         );

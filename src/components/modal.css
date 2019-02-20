@@ -1,0 +1,55 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+.modal-main {
+    padding: 20px;
+    border-radius: 20px; 
+    text-align: center;
+    position:fixed;
+    background: white;
+    width: 35%;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .close-button {
+    float: right;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 700; 
+    font-size: 20px;
+  }
+
+  .close-button:hover {
+    color: #C32826;
+  }
+
+  .m-name {
+    text-transform: capitalize;
+    margin-top: 20px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 700; 
+    font-size: 20px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #3a3a3a;
+  }
+
+  .m-info {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 20px;
+  }
+
+  .display-block {
+    display: block;
+  }
+  
+  .display-none {
+    display: none;
+  }

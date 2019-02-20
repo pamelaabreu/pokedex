@@ -11,12 +11,12 @@ class Searchbar extends React.Component {
             searchResults:[]
         }
     }
+
     changeText(currentText ) {
         this.setState({ currentText });
-        //console.log({currentText});
-
     }
-    onChange=(e)=>{ 
+
+    onChange = (e) => { 
         const input= e.target.value;
 
         if(input === '' || input === ' '){
@@ -32,6 +32,7 @@ class Searchbar extends React.Component {
         }
 
     }
+
     dropDown=()=>{
         const dropDown= this.state.searchResults.map((e,i)=>{
             return <p onClick={() => this.props.click(e.toLowerCase())} key={i}>{e}</p>
@@ -39,7 +40,12 @@ class Searchbar extends React.Component {
         })
 
         return dropDown;
-        
+    }
+
+    clearDropDown = () => {
+        this.setState({
+            searchResults: [], 
+        })
     }
 
     render() {
@@ -47,7 +53,7 @@ class Searchbar extends React.Component {
             <>
                 <div className="redheader" ></div>
                 
-                    <div className="searchbar-container" >
+                    <div className="searchbar-container" onClick={e => this.clearDropDown()}>
                         <div className='img-col'>
 
                             <img className="img" src="https://files.slack.com/files-pri/TD416AWAE-FG4DTBZAR/download/screen_shot_2019-02-11_at_7.20.46_pm.png" />
@@ -56,7 +62,7 @@ class Searchbar extends React.Component {
                         <div className='search-col'>
 
                         <h1 className= "header-title"> Pursuit Pokedex</h1>
-                            <form>
+                            <form >
                                 <input style={{width:'325px', borderRadius: '5px'}}type="text" placeholder={this.state.initialState} onChange={this.onChange} />
                                 {/* <button onClick={this.changeText.bind(this, 'currentText')}>Search</button> */}
                                 {this.state.searchResults.length > 0 ?

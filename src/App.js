@@ -34,8 +34,14 @@ class App extends Component {
             return { image, name, number };
           });
 
+          const {pageOffset2} =this.state;
           const pkList = this.state.poke_list.concat(dataList);
-          this.setState({poke_list: pkList});
+          this.setState({
+            poke_list: pkList,
+            isFetching: false, 
+            pageOffset: pageOffset2 + pkList.length
+          });
+          
         } else {
           const dataList = data.results.map((e, i) => {
             const name = e.name;
@@ -46,7 +52,12 @@ class App extends Component {
           })
       
           const pkList = this.state.poke_list.concat(dataList);
-          this.setState({poke_list: pkList});
+          const {pageOffset2} =this.state;
+
+          this.setState({
+            poke_list: pkList, 
+            isFetching: false, 
+            pageOffset: pageOffset2 + dataList.length});
         };
       })
       .catch(err => {
@@ -64,11 +75,6 @@ class App extends Component {
 
   componentDidMount () {
     this.getlist();
-  }
-
-  componentDidUpdate (prevProps, prevState) {
-    console.log('this was previous state', prevState)
-    console.log('this is current state', this.state)
   }
 
   render() {
